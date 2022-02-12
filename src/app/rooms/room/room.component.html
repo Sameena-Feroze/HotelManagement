@@ -1,0 +1,57 @@
+<!-- Template-Drivern Form -->
+
+<form name ="roomform" #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+   
+    <input type="hidden" name="RoomNo" [(ngModel)] = "roomService.formData.roomNoId" >
+
+    <!-- Rate -->
+    <div class="form-group">
+        <label>Rate: </label>
+        <input type="number" name="rate"
+        #rate = "ngModel"
+        [(ngModel)] = "roomService.formData.rate"
+        class="form-control"
+        placeholder="Enter Rate"
+        required minlength="2" maxlength="25"
+        [ngClass] = "{'is-invalid': rate.touched && rate.invalid}"/>
+     <!--Validation-->
+     <div class="validation-error" *ngIf = "rate.touched && Title.invalid">
+           
+        <div *ngIf = "rate.errors.required">
+            Rate is required
+        </div>
+    </div>
+    </div>
+
+
+  <!-- Category ID -->
+  <div class="form-group">
+    <label>  category:  </label>
+    <input type="number" name = "categoryId"
+    #categoryID = "ngModel"
+    [(ngModel)] = "roomService.formData.categoryId"
+    class="form-control"
+    placeholder="Enter categoryId"
+    required minlength="5" maxlength="25"
+    [ngClass] = "{'is-invalid': categoryId.touched && categoryId.invalid}"/>
+    <!--Validation-->
+    <!-- <div class="validation-error" *ngIf = "categoryId.touched && categoryId.invalid">
+       
+        <div *ngIf = "categoryId.errors.required">
+             categoryID required
+        </div>
+    </div> -->
+</div>
+
+
+
+ <!--Submit-->
+ <br>
+ <div class="form-group">
+     <button type="submit" 
+     class="btn btn-lg btn-primary form-control"
+     >Submit</button>
+ </div>
+
+    
+</form>

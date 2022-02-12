@@ -1,0 +1,44 @@
+
+    <div class="header">
+        <div class="form-control">
+             <!--Search functionality-->
+            <input type="text" class="form-control" placeholder="Search text here..." [(ngModel)]="filter">
+
+            {{filter}}
+            <!-- <a [routerLink]="" class="btn btn-outline-secondary" style="float: right; margin-top: 10px; margin-bottom: 10px;" (click)="insertPost()"> Add Post</a> -->
+        </div>
+        <table class="table table-bordered">
+        <thead>
+            
+            <tr>
+                 <th>roomNoId</th>
+                 <th>rate</th>
+                 <th>categoryId</th>
+                 <th>roomStatusId</th>
+                 <th>Action</th> <!-- edit,delete -->
+                   
+             </tr>
+         </thead>
+
+         <tbody>
+             <tr *ngFor="let r of roomService.rooms | paginate:{itemsPerPage:3,currentPage: page}">
+                <td>{{r.roomNoId}}</td>
+                <td>{{r.rate}}</td>
+                <td>{{r.categoryId}}</td>
+                <td>{{r.roomStatusId}}</td>
+                
+                <td>
+                    <button class="btn btn-sm btn-info" (click)="updateRoom(r.roomId)"> Edit </button>
+                    &nbsp;
+                    
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteRoom(r.roomNoId)"> X </button>
+                </td>
+              </tr>
+         </tbody>
+        </table>
+        <div class="footer">
+            <!-- pagination -->
+            <pagination-controls (pageChange)="page=($event)"></pagination-controls>
+        </div>
+    </div>
+
