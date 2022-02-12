@@ -15,7 +15,7 @@
         required minlength="2" maxlength="25"
         [ngClass] = "{'is-invalid': rate.touched && rate.invalid}"/>
      <!--Validation-->
-     <div class="validation-error" *ngIf = "rate.touched && Title.invalid">
+     <div class="validation-error" *ngIf = "rate.touched && rate.invalid">
            
         <div *ngIf = "rate.errors.required">
             Rate is required
@@ -28,7 +28,7 @@
   <div class="form-group">
     <label>  category:  </label>
     <input type="number" name = "categoryId"
-    #categoryID = "ngModel"
+    #categoryId = "ngModel"
     [(ngModel)] = "roomService.formData.categoryId"
     class="form-control"
     placeholder="Enter categoryId"
